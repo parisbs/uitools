@@ -1,0 +1,3 @@
+include ':uitools'
+include ':app'
+rootProject.name = "UI Tools Sample"
