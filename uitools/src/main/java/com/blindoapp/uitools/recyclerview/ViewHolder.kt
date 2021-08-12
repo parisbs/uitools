@@ -11,5 +11,5 @@ import androidx.recyclerview.widget.RecyclerView
  *
  * @param view the View to implement this ViewHolder
  */
-class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+open class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 }
