@@ -45,11 +45,6 @@ dependencies {
     implementation libraries.androidx.legacy
     implementation libraries.androidx.navigationFragmentKtx
     implementation libraries.androidx.navigationUiKtx
-    implementation libraries.lifecycle.ktx
-    implementation libraries.lifecycle.extensions
-
-    implementation libraries.koin.core
-    implementation libraries.koin.viewModel
 
     implementation project(':uitools')
 

@@ -1,38 +1,38 @@
 ext {
     // App
     sdk = [
-        compile: 29,
+        compile: 30,
         min: 21,
-        target: 29,
-        buildToolsVersion: "29.0.3"
+        target: 30,
+        buildToolsVersion: "30.0.3"
     ]
 
     // Kotlin and JetBrains
-    kotlinVersion = "1.3.72"
+    kotlinVersion = "1.5.10"
     jetBrainsAnnotationsVersion = "13.0"
 
     // Android libraries
-    appcompatVersion = "1.1.0"
-    constraintVersion = "1.1.3"
-    ktxVersion = "1.3.0"
+    appcompatVersion = "1.3.1"
+    constraintVersion = '2.1.0'
+    ktxVersion = "1.6.0"
     legacySupportVersion = "1.0.0"
-    lifecycleVersion = "2.2.0"
-    navigationVersion = '2.3.0'
-    paging_version = "2.1.2"
+    lifecycleVersion = "2.3.1"
+    navigationVersion = "2.3.5"
+    pagingVersion = "3.0.1"
     preferencesVersion = "1.1.1"
-    recyclerVersion = "1.1.0"
+    recyclerVersion = "1.2.1"
     roomVersion = "2.2.5"
     viewPager2Version = "1.0.0"
     designVersion = "1.0.0-rc01"
-    materialVersion = "1.1.0"
+    materialVersion = "1.4.0"
     coroutinesVersion = "1.3.5"
 
     // Test
     coreTestingVersion = "2.0.1"
     runnerVersion = "1.1.1"
-    espressoVersion = '3.2.0'
-    junitVersion = '4.13'
-    junitExtVersion = '1.1.1'
+    espressoVersion = "3.4.0"
+    junitVersion = "4.13.1"
+    junitExtVersion = "1.1.3"
 
     // Mocks
     mockkVersion = "1.9.3"
@@ -44,26 +44,10 @@ ext {
     dcendentsVersion = "2.1"
 
     // External libraries
-    googleServicesVersion = "17.0.0"
-    playServicesVersion = "16.0.1"
-    firebaseVersion = "16.0.8"
-    firebaseAuthVersion = '19.3.2'
-    firebaseUiAuthVersion = "6.2.1"
-    firebaseAdsVersion = '19.2.0'
-    firebaseCrashlyticsVersion = "17.1.0"
-    firebasePerformanceVersion = "19.0.7"
-    firebaseCloudMessagingVersion = "20.2.0"
-    firebaseAnalyticsVersion = '17.4.4'
-    apolloVersion = "2.0.1"
-    koinVersion = "2.0.1"
-    playStoreBillingVersion = '3.0.0'
-    timber_version = "4.7.1"
+    timber_version = "5.0.1"
     page_indicator_version = "1.0.6"
     viewStateVersion = "1.0"
-    okhttp3Version = '4.7.2'
     glideVersion = "4.11.0"
-    facebookVersion = "7.0.0"
-    twitterVersion = "3.3.0"
 
     // Implementations
     libraries = [
@@ -97,16 +81,14 @@ ext {
             navigationUi: "androidx.navigation:navigation-ui:$navigationVersion",
             navigationFragmentKtx: "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
             navigationUiKtx: "androidx.navigation:navigation-ui-ktx:$navigationVersion",
-            paging: "androidx.paging:paging-runtime:$paging_version"
+            paging: [
+                runtime: "androidx.paging:paging-runtime:$pagingVersion",
+                test: "androidx.paging:paging-common:$pagingVersion"
+            ]
         ],
         material       : [
             material: "com.google.android.material:material:${materialVersion}",
             design: "com.google.android.material:material:$designVersion"
-        ],
-        apollo         : [
-            runtime: "com.apollographql.apollo:apollo-runtime:$apolloVersion",
-            cache: "com.apollographql.apollo:apollo-http-cache:$apolloVersion",
-            coroutinesSupport: "com.apollographql.apollo:apollo-coroutines-support:$apolloVersion"
         ],
         coroutines: [
             core: "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
@@ -114,41 +96,21 @@ ext {
             jdk8: "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutinesVersion",
             test: "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
         ],
-        lifecycle      : [
-            extensions: "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
-            compiler: "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion",
-            testing: "androidx.arch.core:core-testing:$lifecycleVersion",
-            ktx: "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
-        ],
-        koin           : [
-            core: "org.koin:koin-android:$koinVersion",
-            viewModel: "org.koin:koin-android-viewmodel:$koinVersion"
-        ],
-        firebase       : [
-                ui: [
-                        auth: "com.firebaseui:firebase-ui-auth:$firebaseUiAuthVersion"
-                ],
-                core: "com.google.firebase:firebase-core:$firebaseVersion",
-                auth: "com.google.firebase:firebase-auth:$firebaseAuthVersion",
-                authKtx: "com.google.firebase:firebase-auth-ktx:$firebaseAuthVersion",
-                ads: "com.google.firebase:firebase-ads:$firebaseAdsVersion",
-                crashlytics: "com.google.firebase:firebase-crashlytics:$firebaseCrashlyticsVersion",
-                performance: "com.google.firebase:firebase-perf:$firebasePerformanceVersion",
-                cloudMessaging: "com.google.firebase:firebase-messaging:$firebaseCloudMessagingVersion",
-                analytics: "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion",
-                analyticsKtx: "com.google.firebase:firebase-analytics-ktx:$firebaseAnalyticsVersion"
-        ],
-        billing        : [
-            playStoreBilling: "com.android.billingclient:billing:$playStoreBillingVersion",
-                playStoreBillingKtx: "com.android.billingclient:billing-ktx:$playStoreBillingVersion"
-        ],
+            lifecycle      : [
+                runtime: "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion",
+                viewModel: "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+                liveData: "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
+                savedState: "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion",
+                service: "androidx.lifecycle:lifecycle-service:$lifecycleVersion",
+                process: "androidx.lifecycle:lifecycle-process:$lifecycleVersion",
+                reactiveStreams: "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycleVersion",
+                compilerJava8: "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion",
+                testing: "androidx.arch.core:core-testing:$lifecycleVersion"
+            ],
         room: [
             runtime: "androidx.room:room-runtime:$roomVersion",
             compiler: "androidx.room:room-compiler:$roomVersion",
             coroutines: "androidx.room:room-ktx:$roomVersion"
-        ],
-        google: [
-            services: "com.google.android.gms:play-services-auth:$googleServicesVersion"
         ],
             jetBrains: [
                 annotations: "org.jetbrains:annotations:$jetBrainsAnnotationsVersion"
@@ -157,12 +119,6 @@ ext {
                 core: "com.github.bumptech.glide:glide:$glideVersion",
                 annotations:  "com.github.bumptech.glide:compiler:$glideVersion"
             ],
-            squareup: [
-                okhttp3: "com.squareup.okhttp3:okhttp:$okhttp3Version",
-                    loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$okhttp3Version"
-            ],
-            facebook: "com.facebook.android:facebook-android-sdk:$facebookVersion",
-            twitter: "com.twitter.sdk.android:twitter-core:$twitterVersion",
         timber: "com.jakewharton.timber:timber:$timber_version",
         viewState: "com.github.wizeline:android-viewstate:$viewStateVersion"
     ]
