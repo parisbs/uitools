@@ -24,6 +24,15 @@ abstract class PaginationScrollListener(
     abstract fun hasNextPage(): Boolean
 
     /**
+     * Prefetch Distance
+     *
+     * The distance to load more items
+     *
+     * @return Int
+     */
+    abstract fun prefetchDistance(): Int
+
+    /**
      * Is loading
      *
      * If the adapter is currently loading more items
@@ -42,12 +51,11 @@ abstract class PaginationScrollListener(
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)
 
-        val visibleItems = linearLayoutManager.childCount
         val totalItems = linearLayoutManager.itemCount
         val firstVisiblePosition = linearLayoutManager.findFirstVisibleItemPosition()
 
         if (isLoading().not() && hasNextPage()) {
-            if (firstVisiblePosition >= 0 && firstVisiblePosition + visibleItems >= totalItems) {
+            if (firstVisiblePosition >= 0 && (firstVisiblePosition + prefetchDistance()) >= totalItems) {
                 loadMoreItems()
             }
         }
